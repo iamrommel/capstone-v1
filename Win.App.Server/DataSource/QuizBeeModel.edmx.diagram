@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8fd66297a36c467ab8657fc4e1ea3c36" Name="Diagram1">
+        <EntityTypeShape EntityType="QuizBeeModel.ContestantScore" Width="1.5" PointX="2.875" PointY="0.625" />
+        <EntityTypeShape EntityType="QuizBeeModel.QuizL1" Width="1.5" PointX="0.875" PointY="0.625" />
+        <EntityTypeShape EntityType="QuizBeeModel.QuizL2" Width="1.5" PointX="4.75" PointY="0.625" />
+        <EntityTypeShape EntityType="QuizBeeModel.QuizL3" Width="1.5" PointX="6.625" PointY="0.625" />
+        <EntityTypeShape EntityType="QuizBeeModel.Clincher" Width="1.5" PointX="8.625" PointY="0.625" />
+        <EntityTypeShape EntityType="QuizBeeModel.GQuiz" Width="1.5" PointX="10.625" PointY="0.625" />
+        <EntityTypeShape EntityType="QuizBeeModel.GContestantScore" Width="1.5" PointX="2.875" PointY="2.5" />
+        <EntityTypeShape EntityType="QuizBeeModel.AdminAccount" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="QuizBeeModel.TallySheet" Width="1.5" PointX="3.375" PointY="5.75" />
+        <EntityTypeShape EntityType="QuizBeeModel.GTallySheet" Width="1.5" PointX="5.625" PointY="5.625" />
+        <EntityTypeShape EntityType="QuizBeeModel.GParticipant" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="QuizBeeModel.Participant" Width="1.5" PointX="9.625" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

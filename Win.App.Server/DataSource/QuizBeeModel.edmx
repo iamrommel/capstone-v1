@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuizBeeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clincher">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="Questions" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option1" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option2" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option3" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option4" Type="varchar(max)" Nullable="false" />
+          <Property Name="TimeFrame" Type="int" Nullable="false" />
+          <Property Name="AnswerKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DifficultyLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContestantScore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContestantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Score" Type="int" />
+        </EntityType>
+        <EntityType Name="GContestantScore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContestantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Score" Type="int" />
+        </EntityType>
+        <EntityType Name="GParticipants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="varchar(max)" />
+          <Property Name="Participant1" Type="varchar(max)" />
+          <Property Name="Participant2" Type="varchar(max)" />
+          <Property Name="Participant3" Type="varchar(max)" />
+          <Property Name="Participant4" Type="varchar(max)" />
+          <Property Name="Participant5" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GQuiz">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="Questions" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option1" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option2" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option3" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option4" Type="varchar(max)" Nullable="false" />
+          <Property Name="TimeFrame" Type="int" Nullable="false" />
+          <Property Name="AnswerKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DifficultyLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GTallySheet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContestantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Participants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="varchar(max)" />
+          <Property Name="Participant1" Type="varchar(max)" />
+          <Property Name="Participant2" Type="varchar(max)" />
+          <Property Name="Participant3" Type="varchar(max)" />
+          <Property Name="Participant4" Type="varchar(max)" />
+          <Property Name="Participant5" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="QuizL1">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="Questions" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option1" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option2" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option3" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option4" Type="varchar(max)" Nullable="false" />
+          <Property Name="TimeFrame" Type="int" Nullable="false" />
+          <Property Name="AnswerKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DifficultyLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuizL2">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="Questions" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option1" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option2" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option3" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option4" Type="varchar(max)" Nullable="false" />
+          <Property Name="TimeFrame" Type="int" Nullable="false" />
+          <Property Name="AnswerKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DifficultyLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuizL3">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="Questions" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option1" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option2" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option3" Type="varchar(max)" Nullable="false" />
+          <Property Name="Option4" Type="varchar(max)" Nullable="false" />
+          <Property Name="TimeFrame" Type="int" Nullable="false" />
+          <Property Name="AnswerKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DifficultyLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TallySheet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContestantName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="QuestionNumber" Type="int" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="QuizBeeModelStoreContainer">
+          <EntitySet Name="AdminAccount" EntityType="Self.AdminAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clincher" EntityType="Self.Clincher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContestantScore" EntityType="Self.ContestantScore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GContestantScore" EntityType="Self.GContestantScore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GParticipants" EntityType="Self.GParticipants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GQuiz" EntityType="Self.GQuiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GTallySheet" EntityType="Self.GTallySheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuizL1" EntityType="Self.QuizL1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuizL2" EntityType="Self.QuizL2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuizL3" EntityType="Self.QuizL3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TallySheet" EntityType="Self.TallySheet" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuizBeeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="QuizBeeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ContestantScores" EntityType="QuizBeeModel.ContestantScore" />
+          <EntitySet Name="QuizL1" EntityType="QuizBeeModel.QuizL1" />
+          <EntitySet Name="QuizL2" EntityType="QuizBeeModel.QuizL2" />
+          <EntitySet Name="QuizL3" EntityType="QuizBeeModel.QuizL3" />
+          <EntitySet Name="Clinchers" EntityType="QuizBeeModel.Clincher" />
+          <EntitySet Name="GQuizs" EntityType="QuizBeeModel.GQuiz" />
+          <EntitySet Name="GContestantScores" EntityType="QuizBeeModel.GContestantScore" />
+          <EntitySet Name="AdminAccounts" EntityType="QuizBeeModel.AdminAccount" />
+          <EntitySet Name="TallySheets" EntityType="QuizBeeModel.TallySheet" />
+          <EntitySet Name="GTallySheet" EntityType="QuizBeeModel.GTallySheet" />
+          <EntitySet Name="GParticipants" EntityType="QuizBeeModel.GParticipant" />
+          <EntitySet Name="Participants" EntityType="QuizBeeModel.Participant" />
+          </EntityContainer>
+        <EntityType Name="ContestantScore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContestantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Int32" />
+        </EntityType>
+        <EntityType Name="QuizL1">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+          <Property Name="Questions" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeFrame" Type="Int32" Nullable="false" />
+          <Property Name="AnswerKey" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DifficultyLevel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuizL2">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+          <Property Name="Questions" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeFrame" Type="Int32" Nullable="false" />
+          <Property Name="AnswerKey" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DifficultyLevel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuizL3">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+          <Property Name="Questions" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeFrame" Type="Int32" Nullable="false" />
+          <Property Name="AnswerKey" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DifficultyLevel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clincher">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+          <Property Name="Questions" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeFrame" Type="Int32" Nullable="false" />
+          <Property Name="AnswerKey" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DifficultyLevel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GQuiz">
+          <Key>
+            <PropertyRef Name="QuestionNumber" />
+          </Key>
+          <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+          <Property Name="Questions" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Option4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeFrame" Type="Int32" Nullable="false" />
+          <Property Name="AnswerKey" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DifficultyLevel" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GContestantScore">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContestantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Score" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AdminAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TallySheet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContestantName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GTallySheet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContestantName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionNumber" Type="Int32" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="GParticipant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Participant5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuizBeeModelStoreContainer" CdmEntityContainer="QuizBeeEntities">
+          <EntitySetMapping Name="ContestantScores">
+            <EntityTypeMapping TypeName="QuizBeeModel.ContestantScore">
+              <MappingFragment StoreEntitySet="ContestantScore">
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="ContestantName" ColumnName="ContestantName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuizL1">
+            <EntityTypeMapping TypeName="QuizBeeModel.QuizL1">
+              <MappingFragment StoreEntitySet="QuizL1">
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="AnswerKey" ColumnName="AnswerKey" />
+                <ScalarProperty Name="TimeFrame" ColumnName="TimeFrame" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuizL2">
+            <EntityTypeMapping TypeName="QuizBeeModel.QuizL2">
+              <MappingFragment StoreEntitySet="QuizL2">
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="AnswerKey" ColumnName="AnswerKey" />
+                <ScalarProperty Name="TimeFrame" ColumnName="TimeFrame" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuizL3">
+            <EntityTypeMapping TypeName="QuizBeeModel.QuizL3">
+              <MappingFragment StoreEntitySet="QuizL3">
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="AnswerKey" ColumnName="AnswerKey" />
+                <ScalarProperty Name="TimeFrame" ColumnName="TimeFrame" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clinchers">
+            <EntityTypeMapping TypeName="IsTypeOf(QuizBeeModel.Clincher)">
+              <MappingFragment StoreEntitySet="Clincher">
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="AnswerKey" ColumnName="AnswerKey" />
+                <ScalarProperty Name="TimeFrame" ColumnName="TimeFrame" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GQuizs">
+            <EntityTypeMapping TypeName="QuizBeeModel.GQuiz">
+              <MappingFragment StoreEntitySet="GQuiz">
+                <ScalarProperty Name="DifficultyLevel" ColumnName="DifficultyLevel" />
+                <ScalarProperty Name="AnswerKey" ColumnName="AnswerKey" />
+                <ScalarProperty Name="TimeFrame" ColumnName="TimeFrame" />
+                <ScalarProperty Name="Option4" ColumnName="Option4" />
+                <ScalarProperty Name="Option3" ColumnName="Option3" />
+                <ScalarProperty Name="Option2" ColumnName="Option2" />
+                <ScalarProperty Name="Option1" ColumnName="Option1" />
+                <ScalarProperty Name="Questions" ColumnName="Questions" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GContestantScores">
+            <EntityTypeMapping TypeName="QuizBeeModel.GContestantScore">
+              <MappingFragment StoreEntitySet="GContestantScore">
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="ContestantName" ColumnName="ContestantName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminAccounts">
+            <EntityTypeMapping TypeName="QuizBeeModel.AdminAccount">
+              <MappingFragment StoreEntitySet="AdminAccount">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TallySheets">
+            <EntityTypeMapping TypeName="QuizBeeModel.TallySheet">
+              <MappingFragment StoreEntitySet="TallySheet">
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+                <ScalarProperty Name="ContestantName" ColumnName="ContestantName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GTallySheet">
+            <EntityTypeMapping TypeName="QuizBeeModel.GTallySheet">
+              <MappingFragment StoreEntitySet="GTallySheet">
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="QuestionNumber" ColumnName="QuestionNumber" />
+                <ScalarProperty Name="ContestantName" ColumnName="ContestantName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GParticipants">
+            <EntityTypeMapping TypeName="QuizBeeModel.GParticipant">
+              <MappingFragment StoreEntitySet="GParticipants">
+                <ScalarProperty Name="Participant5" ColumnName="Participant5" />
+                <ScalarProperty Name="Participant4" ColumnName="Participant4" />
+                <ScalarProperty Name="Participant3" ColumnName="Participant3" />
+                <ScalarProperty Name="Participant2" ColumnName="Participant2" />
+                <ScalarProperty Name="Participant1" ColumnName="Participant1" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participants">
+            <EntityTypeMapping TypeName="QuizBeeModel.Participant">
+              <MappingFragment StoreEntitySet="Participants">
+                <ScalarProperty Name="Participant5" ColumnName="Participant5" />
+                <ScalarProperty Name="Participant4" ColumnName="Participant4" />
+                <ScalarProperty Name="Participant3" ColumnName="Participant3" />
+                <ScalarProperty Name="Participant2" ColumnName="Participant2" />
+                <ScalarProperty Name="Participant1" ColumnName="Participant1" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
