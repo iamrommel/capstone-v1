@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Win.App.Server.DataSource;
 
 namespace Win.App.Server
 {
@@ -80,35 +81,36 @@ namespace Win.App.Server
 
         public void SetupData()
         {
-            TallySheetListView.Items.Clear();
-            var questionNNumbers = TallySheetManager.GetQuestionNumbers();
-
-            foreach (var questionNumber in questionNNumbers)
+            using (var ctx = new QuizBeeEntities())
             {
-                var questionString = QuestionManager.GetQuestionByQuestionNumber(questionNumber);
-                //set this as the row header
-                var listViewItem = TallySheetListView.Items.Add(questionString);
+                TallySheetListView.Items.Clear();
+                var questionNNumbers = TallySheetManager.GetQuestionNumbers();
 
-                //get the answer by question number and by 
-                foreach (var contenstant in _contenstants)
+                foreach (var questionNumber in questionNNumbers)
                 {
-                    var answer = TallySheetManager.Context.TallySheets
-                        .FirstOrDefault(m => m.ContestantName == contenstant && m.QuestionNumber == questionNumber);
+                    var questionString = QuestionManager.GetQuestionByQuestionNumber(questionNumber);
+                    //set this as the row header
+                    var listViewItem = TallySheetListView.Items.Add(questionString);
 
-                    if (answer == null)
+                    //get the answer by question number and by 
+                    foreach (var contenstant in _contenstants)
                     {
-                        listViewItem.SubItems.Add("NO ANSWER");
+                        var answer = ctx.TallySheets
+                            .FirstOrDefault(m => m.ContestantName == contenstant && m.QuestionNumber == questionNumber);
+
+                        if (answer == null)
+                        {
+                            listViewItem.SubItems.Add("NO ANSWER");
+                        }
+                        else
+                        {
+                            listViewItem.SubItems.Add(answer.Answer);
+                        }
+
                     }
-                    else
-                    {
-                        listViewItem.SubItems.Add(answer.Answer);                        
-                    }
-
-
-
                 }
-
             }
+          
 
         }
 

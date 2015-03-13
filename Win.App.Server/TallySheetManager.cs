@@ -8,20 +8,7 @@ namespace Win.App.Server
     public class TallySheetManager
     {
 
-        private QuizBeeEntities _context;
-        public QuizBeeEntities Context
-        {
-            get
-            {
-                if (_context == null)
-                {
-                    _context = new QuizBeeEntities();
-                }
 
-                return _context;
-            }
-            set { _context = value; }
-        }
 
         public void UpdateTallySheet(string contestName, int questionNumber, string answerKey)
         {
@@ -53,18 +40,26 @@ namespace Win.App.Server
 
         public List<string> GetContestants()
         {
-            //get only the unique contestants from the tallysheet table
-            var result = Context.TallySheets.OrderBy(m => m.ContestantName).Select(m => m.ContestantName).Distinct().ToList();
 
-            return result;
+            using (var ctx = new QuizBeeEntities())
+            {
+                //get only the unique contestants from the tallysheet table
+                var result = ctx.TallySheets.OrderBy(m => m.ContestantName).Select(m => m.ContestantName).Distinct().ToList();
 
+                return result;
+
+            }
         }
 
         public List<int> GetQuestionNumbers()
         {
-            var result = Context.TallySheets.OrderBy(m => m.QuestionNumber).Select(m => m.QuestionNumber).Distinct().ToList();
+            using (var ctx = new QuizBeeEntities())
+            {
+                var result =
+                    ctx.TallySheets.OrderBy(m => m.QuestionNumber).Select(m => m.QuestionNumber).Distinct().ToList();
 
-            return result;
+                return result;
+            }
 
         }
     }

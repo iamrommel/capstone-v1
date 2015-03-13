@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Win.App.Server.DataSource;
 
 namespace Win.App.Server
 {
@@ -84,35 +80,38 @@ namespace Win.App.Server
 
         public void SetupData()
         {
-            TallySheetListView.Items.Clear();
-
-            var questionNNumbers = TallySheetManager.GetQuestionNumbers();
-
-            foreach (var questionNumber in questionNNumbers)
+            using (var context = new QuizBeeEntities())
             {
-                var questionString = QuestionManager.GetQuestionByQuestionNumber(questionNumber);
-                //set this as the row header
-                var listViewItem = TallySheetListView.Items.Add(questionString);
+                TallySheetListView.Items.Clear();
 
-                //get the answer by question number and by 
-                foreach (var contenstant in _contenstants)
+                var questionNNumbers = TallySheetManager.GetQuestionNumbers();
+
+                foreach (var questionNumber in questionNNumbers)
                 {
-                    var answer = TallySheetManager.Context.TallySheets
-                        .FirstOrDefault(m => m.ContestantName == contenstant && m.QuestionNumber == questionNumber);
+                    var questionString = QuestionManager.GetQuestionByQuestionNumber(questionNumber);
+                    //set this as the row header
+                    var listViewItem = TallySheetListView.Items.Add(questionString);
 
-                    if (answer == null)
+                    //get the answer by question number and by 
+                    foreach (var contenstant in _contenstants)
                     {
-                        listViewItem.SubItems.Add("NO ANSWER");
-                    }
-                    else
-                    {
-                        listViewItem.SubItems.Add(answer.Answer);
-                    }
+                        var answer = context.TallySheets
+                            .FirstOrDefault(m => m.ContestantName == contenstant && m.QuestionNumber == questionNumber);
+
+                        if (answer == null)
+                        {
+                            listViewItem.SubItems.Add("NO ANSWER");
+                        }
+                        else
+                        {
+                            listViewItem.SubItems.Add(answer.Answer);
+                        }
 
 
+
+                    }
 
                 }
-
             }
 
         }
